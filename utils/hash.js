@@ -8,5 +8,5 @@ export const getSalt = () => {
 export const hash = (password, salt) => {
     const pepper = process.env.PEPPER
     const hashing = crypto.createHash("sha256")
-    return hashing.update(salt + password + pepper).digest("base64url")
+    return salt + hashing.update(salt + password + pepper).digest("base64url")
 }
